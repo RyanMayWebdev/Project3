@@ -1,38 +1,49 @@
+.message {
+    background-color: white;
+    border-radius: 0 20px 20px;
+    padding: 30px;
+    width: 25%;
+}
+.messagesContainer {
+    display: flex;
+    flex: 0 1 75%;
+    flex-direction: column;
+    margin: 0 auto;
+    overflow: auto;
+    width: 90%;
+}
+
+h1 {
+    background-color: #009aff;
+    margin: 0;
+    padding: 30px;
+    text-align: center;
+}
+
 .App {
-  text-align: center;
+    background-color: #333333;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.userMessageContainer {
+    background-color: #00a6ff;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.userMessageContainer form {
+    width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.userMessageContainer textArea {
+    border: none;
+    border-radius: 15px;
+    height: 150px;
+    padding: 10px;
+    resize: none;
+    width: calc(100% - 20px);
 }

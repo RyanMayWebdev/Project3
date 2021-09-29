@@ -1,25 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import ChatInput from './ChatInput';
+import {useState} from 'react';
+import DisplayMessages from './Message';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [messages,
+        setMessages] = useState([]);
+
+
+    function handleSubmit(e, userInput, setUserInput){
+        e.preventDefault();
+        if (userInput) {
+            const messageArray = messages;
+            messageArray.push(userInput)
+            setMessages([...messageArray]);
+            setUserInput('');
+        }
+    }
+
+    return (
+        <div className="App">
+            <h1>Welcome to Bubbles!</h1>
+            <div className="messagesContainer">
+                {messages.length > 0
+                    ? <DisplayMessages messages={messages}/>
+                    : null}
+            </div>
+            <div className="userMessageContainer">
+            <ChatInput handleFunc={handleSubmit}/>
+            </div>
+
+        </div>
+    );
 }
 
 export default App;
