@@ -1,31 +1,43 @@
 import './App.css';
 import ChatInput from './ChatInput';
-import {useState} from 'react';
+import {useEffect,useState} from 'react';
 import DisplayMessages from './Message';
+import { readDatabase, writeDatabase } from './firebase';
 
-function App() {
 
+const App = () => {
     const [messages,
-        setMessages] = useState([]);
+        setMessages] = useState([]); 
 
-
-    function handleSubmit(e, userInput, setUserInput){
+    const handleSubmit = (e, userInput, setUserInput) => {
         e.preventDefault();
         if (userInput) {
-            const messageArray = messages;
-            messageArray.push(userInput)
-            setMessages([...messageArray]);
+            const messageArr = messages
+            messageArr.push(userInput)
+            writeDatabase(messageArr);
             setUserInput('');
         }
     }
+
+    const getMessages = (data) => {
+        setMessages(data)
+    }
+
+    
+     useEffect(()=> {
+        readDatabase(getMessages)
+     },[])
+
+
+ 
+
 
     return (
         <div className="App">
             <h1>Welcome to Bubbles!</h1>
             <div className="messagesContainer">
-                {messages.length > 0
-                    ? <DisplayMessages messages={messages}/>
-                    : null}
+            {messages.length > 0 ? <DisplayMessages messages={messages}/> : null}
+
             </div>
             <div className="userMessageContainer">
             <ChatInput handleFunc={handleSubmit}/>
