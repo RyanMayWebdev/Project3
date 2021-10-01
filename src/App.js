@@ -3,7 +3,7 @@ import ChatInput from './ChatInput';
 import {useEffect,useState} from 'react';
 import DisplayMessages from './Message';
 import database from './firebase';
-import {ref, onValue, update } from 'firebase/database';
+import {ref, onValue, update, push, child } from 'firebase/database';
 
 
 const App = () => {
@@ -15,25 +15,40 @@ const App = () => {
     const handleSubmit = (e, userInput, setUserInput) => {
         e.preventDefault();
         if (userInput) {
+            const newKey = push(child(ref(database),'messages')).key;
             const date = new Date();
-            userInput += `   ${date.toLocaleTimeString()}`
-            const messageArr = messages
-            messageArr.push(userInput)
-            const postTo = {}
-            postTo['messages/message'] = messageArr;
-            update(ref(database), postTo)
+            const newMessageObj = {
+                message: userInput,
+                time : date.toLocaleTimeString(),
+                user: "placeholder"
+        };
+            const updates = {};
+            updates['/messages/' + newKey ] = newMessageObj;
+            update(ref(database), updates);
             setUserInput('');
-        } 
-    }
+        } ;
+    };
 
 
      useEffect(()=> {
-        const messagesRef = ref(database,'messages/message');
+        const messagesRef = ref(database,'messages');
         onValue(messagesRef, (snapshot) => {
             const data = snapshot.val();
-            setMessages(data)
-        })
-     },[])
+            const messageArr = [];
+            for (const key in data) {
+                const messageObj = {
+                    id: key,
+                    message: data[key].message,
+                    time: data[key].time,
+                    user: data[key].user
+
+                };
+                messageArr.push(messageObj);
+            }
+            setMessages(messageArr);
+
+        });
+     },[]);
 
 
  
