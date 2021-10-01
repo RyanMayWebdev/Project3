@@ -2,30 +2,37 @@ import './App.css';
 import ChatInput from './ChatInput';
 import {useEffect,useState} from 'react';
 import DisplayMessages from './Message';
-import { readDatabase, writeDatabase } from './firebase';
+import database from './firebase';
+import {ref, onValue, update } from 'firebase/database';
 
 
 const App = () => {
     const [messages,
         setMessages] = useState([]); 
 
+
+
     const handleSubmit = (e, userInput, setUserInput) => {
         e.preventDefault();
         if (userInput) {
+            const date = new Date();
+            userInput += `   ${date.toLocaleTimeString()}`
             const messageArr = messages
             messageArr.push(userInput)
-            writeDatabase(messageArr);
+            const postTo = {}
+            postTo['messages/message'] = messageArr;
+            update(ref(database), postTo)
             setUserInput('');
-        }
+        } 
     }
 
-    const getMessages = (data) => {
-        setMessages(data)
-    }
 
-    
      useEffect(()=> {
-        readDatabase(getMessages)
+        const messagesRef = ref(database,'messages/message');
+        onValue(messagesRef, (snapshot) => {
+            const data = snapshot.val();
+            setMessages(data)
+        })
      },[])
 
 
