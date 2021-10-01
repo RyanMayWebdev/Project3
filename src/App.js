@@ -3,7 +3,8 @@ import ChatInput from './ChatInput';
 import {useEffect,useState} from 'react';
 import DisplayMessages from './Message';
 import database from './firebase';
-import {ref, onValue, update, push, child } from 'firebase/database';
+import {ref, onValue, push } from 'firebase/database';
+
 
 
 const App = () => {
@@ -15,18 +16,16 @@ const App = () => {
     const handleSubmit = (e, userInput, setUserInput) => {
         e.preventDefault();
         if (userInput) {
-            const newKey = push(child(ref(database),'messages')).key;
             const date = new Date();
             const newMessageObj = {
                 message: userInput,
                 time : date.toLocaleTimeString(),
                 user: "placeholder"
-        };
-            const updates = {};
-            updates['/messages/' + newKey ] = newMessageObj;
-            update(ref(database), updates);
+            };
+            const dbRef = ref(database,'messages')
+            push(dbRef, newMessageObj);
             setUserInput('');
-        } ;
+        };
     };
 
 
