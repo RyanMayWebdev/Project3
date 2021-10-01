@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, onValue, update } from "firebase/database";
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDW_x2qs4FYNnQyLKuN5YYNmy-mjJBOZVc",
@@ -13,22 +13,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-const messagesRef = ref(database,'messages/message');
-
-const readDatabase = (callback) => {
-    onValue(messagesRef, (snapshot) => {
-        const data = snapshot.val();
-        callback(data);
-    })
-}
-
-
-const writeDatabase = (message) => {
-    const postTo = {}
-    postTo['messages/message'] = message;
-    update(ref(database), postTo)
-};
-
-  
-    export { readDatabase, writeDatabase };
+ 
+export default database;
  
