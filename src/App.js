@@ -3,6 +3,7 @@ import ChatInput from './ChatInput';
 import {useEffect,useState} from 'react';
 import DisplayMessages from './Message';
 import database from './firebase';
+import Header from './Header';
 import {ref, onValue, push } from 'firebase/database';
 import LoginForm from './LoginForm';
 import Filter  from 'bad-words';
@@ -69,7 +70,7 @@ const App = () => {
         
            (
             <>
-                <h1>Welcome to Bubbles!</h1>
+                <Header handleLoginState={ loginStatus } />
                 <div className="messagesContainer">
                     {messages.length > 0 ? <DisplayMessages messages={messages}/> : null}
 
