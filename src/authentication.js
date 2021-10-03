@@ -2,7 +2,7 @@ import {
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    updateProfile
+    updateProfile, signOut
 } from "firebase/auth";
 
 const auth = getAuth();
@@ -45,7 +45,16 @@ const signIn = (email, password, loggedIn, setDisplayName, errorCheck) => {
         });
 }
 
+const logout = (loggedIn) => {
+    signOut(auth).then(() => {
+        loggedIn(false);
+        // Sign-out successful.
+      }).catch((error) => {
+        // An error happened.
+      });
+}
+
 export {
-    signIn
+    signIn, logout
 };
 export default signUp;

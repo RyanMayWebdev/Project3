@@ -35,6 +35,7 @@ h1 {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    justify-content: space-between;
 }
 
 .userMessageContainer {
@@ -49,7 +50,7 @@ h1 {
     width: 100%;
 }
 
-.react-input-emoji--container{
+.react-emoji div:first-of-type {
     border: none;
     border-radius: 0.75rem;
     height: min-content;
@@ -58,7 +59,8 @@ h1 {
     width: calc(100% - 20px);
 }
 
-.react-input-emoji--placeholder {
+.react-input-emoji--wrapper div:first-of-type {
+    align-items: flex-start;
     top: 0.5rem;
 }
 
