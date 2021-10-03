@@ -4,6 +4,8 @@ html {
     font-size: 125%;
 }
 
+.sr-only:not(:focus):not(:active) { position: absolute; width: 1px; height: 1px; margin: -1px;border: 0;padding: 0;white-space: nowrap;clip-path: inset(100%);clip: rect(00 0 0);overflow: hidden;}
+
 .message {
     background-color: white;
     border-radius: 0 1rem 1rem;
@@ -47,11 +49,23 @@ h1 {
     width: 100%;
 }
 
-.userMessageContainer textArea {
+.react-input-emoji--container{
     border: none;
     border-radius: 0.75rem;
-    height: 7.5rem;
+    height: min-content;
     padding: 0.5rem;
     resize: none;
     width: calc(100% - 20px);
+}
+
+.react-input-emoji--placeholder {
+    top: 0.5rem;
+}
+
+.react-input-emoji--input {
+    height: 0.5rem;
+}
+
+.react-input-emoji--wrapper:hover .react-input-emoji--input, .react-input-emoji--wrapper:focus .react-input-emoji--input, .react-input-emoji--wrapper:focus-within  .react-input-emoji--input{
+    height: 7.5rem;
 }

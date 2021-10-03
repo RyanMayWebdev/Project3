@@ -1,14 +1,10 @@
 import { useState } from "react"
+import InputEmoji from "react-input-emoji";
 
 
 const ChatInput = (props) => {
 
     const [userInput, setUserInput] = useState('');
-
-    const handleChange = (e) => {
-        setUserInput(e.target.value);
-
-    }
 
     const handleKeyDown = (e) => {
         if (e.keyCode === 13 && !e.shiftKey) {
@@ -20,8 +16,8 @@ const ChatInput = (props) => {
     return(
         <> 
             <form id="chatInputForm">
-                <label htmlFor="chatInput">Message:</label>
-                <textarea onKeyDown={ handleKeyDown } onChange={ handleChange }  name="chatInput" id="chatInput" placeholder="Write your message here..." value={userInput}></textarea>
+                <label htmlFor="chatInput" className="sr-only">Message:</label>
+                <InputEmoji value={userInput} onChange={ setUserInput } onKeyDown={ handleKeyDown }  name="chatInput" id="chatInput" placeholder="Write your message here..." />
             </form>
         </>
     )
