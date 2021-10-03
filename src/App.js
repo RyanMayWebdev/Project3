@@ -4,30 +4,40 @@ import {useEffect,useState} from 'react';
 import DisplayMessages from './Message';
 import database from './firebase';
 import {ref, onValue, push } from 'firebase/database';
-
-
+import LoginForm from './LoginForm';
+import Filter  from 'bad-words';
 
 const App = () => {
     const [messages,
         setMessages] = useState([]); 
 
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [displayName, setDisplayName] = useState('');
 
+    const loginStatus = (status) => {
+        setLoggedIn(status);
+    }
+
+    const getDisplayName = (userDisplayName) => {
+        setDisplayName(userDisplayName);
+    }
 
     const handleSubmit = (e, userInput, setUserInput) => {
         e.preventDefault();
         if (userInput) {
+            const filter = new Filter();
+            const message = filter.clean(userInput);
             const date = new Date();
             const newMessageObj = {
-                message: userInput,
+                message: message,
                 time : date.toLocaleTimeString(),
-                user: "placeholder"
+                user: displayName
             };
             const dbRef = ref(database,'messages')
             push(dbRef, newMessageObj);
             setUserInput('');
         };
     };
-
 
      useEffect(()=> {
         const messagesRef = ref(database,'messages');
@@ -49,21 +59,25 @@ const App = () => {
         });
      },[]);
 
-
- 
-
-
     return (
         <div className="App">
-            <h1>Welcome to Bubbles!</h1>
-            <div className="messagesContainer">
-            {messages.length > 0 ? <DisplayMessages messages={messages}/> : null}
+        {
+            !loggedIn ? <LoginForm handleLoginState={ loginStatus } getDisplayName={getDisplayName} /> :
+        
+           (
+            <>
+                <h1>Welcome to Bubbles!</h1>
+                <div className="messagesContainer">
+                    {messages.length > 0 ? <DisplayMessages messages={messages}/> : null}
 
-            </div>
-            <div className="userMessageContainer">
-            <ChatInput handleFunc={handleSubmit}/>
-            </div>
+                 </div>
+                <div className="userMessageContainer">
+                    <ChatInput handleFunc={handleSubmit}/>
+                </div>
+            </>
 
+           )
+        }
         </div>
     );
 }

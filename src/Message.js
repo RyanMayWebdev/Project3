@@ -11,8 +11,7 @@ const DisplayMessages = (props) => {
                 <div className="message" key={message.id}>
                     <p >{message.message}</p>
                     <div>
-                        <p>{message.time}</p>
-                        <p>{message.user}</p>
+                        <p> by {message.user} @ {message.time} </p>
                     </div>
                 </div>
             )
