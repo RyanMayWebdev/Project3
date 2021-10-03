@@ -25,8 +25,11 @@ const App = () => {
     const handleSubmit = (e, userInput, setUserInput) => {
         e.preventDefault();
         if (userInput) {
-            const filter = new Filter();
-            const message = filter.clean(userInput);
+            let message = userInput;
+            if (/\P{Extended_Pictographic}/u.test(userInput)) {
+                const filter = new Filter();
+                message = filter.clean(userInput);
+            }
             const date = new Date();
             const newMessageObj = {
                 message: message,
