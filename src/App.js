@@ -32,9 +32,10 @@ const App = () => {
                 message = filter.clean(userInput);
             }
             const date = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
             const newMessageObj = {
                 message: message,
-                time : date.toLocaleTimeString(),
+                time : `${date.toLocaleTimeString()}  ${date.toLocaleDateString(undefined, options)}`,
                 user: displayName
             };
             const dbRef = ref(database,'messages')
