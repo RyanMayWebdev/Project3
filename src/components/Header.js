@@ -3,10 +3,14 @@ const Header = (props) => {
     const handleClick = () => {
         logout(props.handleLoginState);
     }
+    const headerClass = props.loggedIn ? "headerWrapper shiftRight" : "headerWrapper"
     return (
+
         <header>
-            <div className="headerWrapper"><h1>Bubbles</h1></div>
-            <button className="logoutBtn" onClick={ handleClick }>Logout</button>
+            <div className={headerClass}><h1>Bubbles</h1></div>
+            {
+               props.loggedIn ? <button className="logoutBtn" onClick={ handleClick }>Logout</button> : null
+            }
         </header>
     )
 };

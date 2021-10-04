@@ -45,16 +45,7 @@ const LoginForm = (props) => {
                         id="newEmail"
                         name="newEmail"
                         onChange={e => setNewEmail(e.target.value)}></input>
-                    <label htmlFor="newPassword">Password</label>
-                    <input
-                        type="password"
-                        name="newPassword"
-                        id="newPassword"
-                        value={newPassword}
-                        onChange={e => setNewPassword(e.target.value)}></input>
-                    <label htmlFor="username">
-                        Username:
-                    </label>
+                    <label htmlFor="username">Username:</label>
                     <input
                         type="text"
                         name="username"
@@ -62,6 +53,14 @@ const LoginForm = (props) => {
                         value={username}
                         required
                         onChange={e => setUsername(e.target.value)}></input>
+                    <label htmlFor="newPassword">Password</label>
+                    <input
+                        type="password"
+                        name="newPassword"
+                        id="newPassword"
+                        value={newPassword}
+                        onChange={e => setNewPassword(e.target.value)}></input>
+
                     <button>Sign Up!</button>
                     {validLogin !== undefined
                         ? <p>

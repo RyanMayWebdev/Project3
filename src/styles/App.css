@@ -102,6 +102,10 @@ header {
     display: flex;
     flex: 0 1 100%;
     justify-content: center;
+
+}
+
+.shiftRight {
     margin-left: 5rem;
 }
 
