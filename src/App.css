@@ -61,6 +61,41 @@ h1 {
     border-radius: 1rem 0 1rem 1rem;
 }
 
+.loginWrapper {
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    border-radius: 1rem;
+    background-color: #ffffff;
+}
+
+.formContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.loginForm {
+    display: grid;
+    text-align: center;
+}
+
+.loginForm input {
+    border-radius: 1rem;
+}
+
+.loginForm button {
+    background-color: #00ffb8;
+    border: 1px solid #cbcbcb;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+
+
 /* emoji picker package styling */
 
 .react-emoji div:first-of-type {
