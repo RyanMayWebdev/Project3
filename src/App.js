@@ -1,11 +1,11 @@
-import './App.css';
-import ChatInput from './ChatInput';
+import './styles/App.css';
+import ChatInput from './components/ChatInput';
 import {useEffect,useState} from 'react';
-import DisplayMessages from './Message';
-import database from './firebase';
-import Header from './Header';
+import DisplayMessages from './components/Message';
+import database from './utilities/firebase';
+import Header from './components/Header';
 import {ref, onValue, push } from 'firebase/database';
-import LoginForm from './LoginForm';
+import LoginForm from './components/LoginForm';
 import Filter  from 'bad-words';
 
 const App = () => {

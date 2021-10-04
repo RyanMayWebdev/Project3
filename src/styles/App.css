@@ -30,10 +30,8 @@ html {
 }
 
 h1 {
-    background-color: #00ffb8;
     margin: 0;
     padding: 1.5rem;
-    text-align: center;
 }
 
 .App {
@@ -61,6 +59,30 @@ h1 {
     border-radius: 1rem 0 1rem 1rem;
 }
 
+
+header {
+    display: flex;
+    background-color: #00ffb8;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.headerWrapper {
+    flex: 0 1 100%;
+    margin-left: 5rem;
+    justify-content: center;
+    display: flex;
+}
+
+.logoutBtn {
+    border-radius: 1rem;
+    border: 2px solid #00ad6a;
+    padding: 0.2rem 1rem;
+    margin-top: 0.3rem;
+    margin-right: 2rem;
+    background-color: #fff;
+}
+
 .loginWrapper {
     width: 90%;
     max-width: 500px;
@@ -84,7 +106,9 @@ h1 {
 }
 
 .loginForm input {
+    border: 1px solid #000;
     border-radius: 1rem;
+    padding:0.3rem  0.5rem;
 }
 
 .loginForm button {
@@ -128,5 +152,11 @@ section .emoji-mart-search input {
 @media (max-width: 767px) {
     button.react-input-emoji--button {
         display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .headerWrapper {
+        margin-left: 0;
     }
 }
