@@ -72,7 +72,7 @@ const App = () => {
             <>
                 <Header handleLoginState={ loginStatus } />
                 <div className="messagesContainer">
-                    {messages.length > 0 ? <DisplayMessages messages={messages}/> : null}
+                    {messages.length > 0 ? <DisplayMessages messages={messages} displayName={displayName} /> : null}
 
                  </div>
                 <div className="userMessageContainer">
