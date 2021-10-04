@@ -33,11 +33,11 @@ const LoginForm = (props) => {
     };
 
     return (
-        <div>
-            <div>
+        <div className="loginWrapper">
+            <div className="formContainer">
                 <h2>Create an account:
                 </h2>
-                <form onSubmit={handleSignUpSubmit}>
+                <form className="loginForm" onSubmit={handleSignUpSubmit}>
                     <label htmlFor="newEmail">Email</label>
                     <input
                         type="email"
@@ -70,9 +70,9 @@ const LoginForm = (props) => {
 }
                 </form>
             </div>
-            <div>
+            <div className="formContainer">
                 <h2>Sign in:</h2>
-                <form onSubmit={handleSignInSubmit}>
+                <form className="loginForm"  onSubmit={handleSignInSubmit}>
                     <label htmlFor="email">Email</label>
                     <input
                         type="email"
