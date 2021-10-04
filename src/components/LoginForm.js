@@ -1,6 +1,6 @@
 import {useState} from "react";
-import signUp from "./authentication";
-import {signIn} from "./authentication";
+import signUp from "../utilities/authentication";
+import {signIn} from "../utilities/authentication";
 
 const LoginForm = (props) => {
     const [newEmail,
@@ -60,6 +60,7 @@ const LoginForm = (props) => {
                         name="username"
                         id="username"
                         value={username}
+                        required
                         onChange={e => setUsername(e.target.value)}></input>
                     <button>Sign Up!</button>
                     {validLogin !== undefined
