@@ -65,12 +65,12 @@ const App = () => {
 
     return (
         <div className="App">
+        <Header handleLoginState={ loginStatus } loggedIn={loggedIn} />
         {
             !loggedIn ? <LoginForm handleLoginState={ loginStatus } getDisplayName={getDisplayName} /> :
         
            (
             <>
-                <Header handleLoginState={ loginStatus } />
                 <div className="messagesContainer">
                     {messages.length > 0 ? <DisplayMessages messages={messages} displayName={displayName} /> : null}
 
