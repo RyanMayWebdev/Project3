@@ -69,7 +69,7 @@ h1 {
     background-color: #333333;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh; 
     justify-content: space-between;
 }
 
@@ -96,6 +96,7 @@ header {
     background-color: #00ffb8;
     display: flex;
     justify-content: space-around;
+    margin-bottom: 1rem;
 }
 
 .headerWrapper {
