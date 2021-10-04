@@ -14,17 +14,23 @@ html {
     padding: 1.5rem;
     width: 50%;
 }
+
+.message:last-of-type {
+    scroll-snap-align: end;
+}
 .messagesContainer {
     display: flex;
     flex: 0 1 75%;
     flex-direction: column;
     margin: 0 auto;
-    overflow: auto;
     width: 90%;
+    overflow-y: scroll;
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y proximity;
 }
 
 h1 {
-    background-color: #009aff;
+    background-color: #00ffb8;
     margin: 0;
     padding: 1.5rem;
     text-align: center;
@@ -39,7 +45,7 @@ h1 {
 }
 
 .userMessageContainer {
-    background-color: #00a6ff;
+    background-color: #00ffb8;
     border-radius: 0.5rem 0.5rem 0 0;
     display: flex;
     justify-content: center;
@@ -50,10 +56,16 @@ h1 {
     width: 100%;
 }
 
+.right {
+    align-self: flex-end;
+    border-radius: 1rem 0 1rem 1rem;
+}
+
+/* emoji picker package styling */
+
 .react-emoji div:first-of-type {
     border: none;
     border-radius: 0.75rem;
-    height: min-content;
     padding: 0.5rem;
     resize: none;
     width: calc(100% - 20px);
@@ -70,4 +82,16 @@ h1 {
 
 .react-input-emoji--wrapper:hover .react-input-emoji--input, .react-input-emoji--wrapper:focus .react-input-emoji--input, .react-input-emoji--wrapper:focus-within  .react-input-emoji--input{
     height: 7.5rem;
+}
+
+
+section .emoji-mart-search input {
+    font-size: 1rem;
+    width: 70%;
+}
+
+@media (max-width: 767px) {
+    button.react-input-emoji--button {
+        display: none;
+    }
 }
