@@ -184,7 +184,7 @@ input:focus-visible {
     height: 0.5rem;
 }
 
-.react-input-emoji--wrapper:hover .react-input-emoji--input, .react-input-emoji--wrapper:focus .react-input-emoji--input, .react-input-emoji--wrapper:focus-within  .react-input-emoji--input{
+ .react-input-emoji--wrapper:focus .react-input-emoji--input, .react-input-emoji--wrapper:focus-within  .react-input-emoji--input{
     height: 7.5rem;
 }
 
