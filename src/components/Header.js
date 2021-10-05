@@ -5,22 +5,22 @@ const Header = (props) => {
         logout(props.handleLoginState);
     }
 
-    const selectClass = props.loggedIn
-        ? "channelSelect"
+    const optionClass = props.loggedIn
+        ? "options"
         : "hidden"
     return (
 
         <header>
             <div className='headerWrapper'>
                 <h1>Bubbles</h1>
-                <div className="options">
+                <div className={optionClass}>
                     <form >
                         <label htmlFor="channelSelect">Channel:
                         </label>
                         <select
                             id="channelSelect"
                             name="channelSelect"
-                            className={selectClass}
+                            className={channelSelect}
                             onChange={(e) => props.changeChannel(e.target.value)}>
                             <option value="general">General</option>
                             <option value="gaming">Gaming</option>
