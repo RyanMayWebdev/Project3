@@ -74,6 +74,16 @@ h1 {
     justify-content: space-between;
 }
 
+.channelSelect {
+    background-color: #00ffb8;
+    border: 3px solid #fff;
+    border-radius: 1rem;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+}
+
 .userMessageContainer {
     background-color: #00ffb8;
     border-radius: 0.5rem 0.5rem 0 0;
@@ -100,25 +110,35 @@ header {
     margin-bottom: 1rem;
 }
 
+.hidden {
+    display: none;
+}
+
 .headerWrapper {
+    align-items: center;
     display: flex;
     flex: 0 1 100%;
-    justify-content: center;
+    flex-direction: column;
 
 }
 
-.shiftRight {
-    margin-left: 5rem;
+.options {
+    align-items:baseline;
+    display: flex;
 }
 
+.options form, .options label {
+    margin-right: 0.5rem;
+}
+.options label {
+    color: #fff;
+    font-weight: 600;
+}
 .logoutBtn {
     background-color: #fff;
     border: 1px solid #acacac;
     border-radius: 1rem;
-    margin-right: 2rem;
-    margin-top: 0.3rem;
     padding: 0.2rem 1rem;
-
 }
 
 .logoutBtn:hover, .logoutBtn:focus-visible, .logoutBtn:focus {
@@ -218,5 +238,13 @@ section .emoji-mart-search input {
 
     h1 {
         font-size: 3rem;
+    }
+}
+
+@media (max-width: 374px) {
+    .options {
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 1rem;
     }
 }

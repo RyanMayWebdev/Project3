@@ -22,7 +22,7 @@ const App = () => {
 
     const loginStatus = (status) => {
         setLoggedIn(status);
-    }
+    } 
 
     const getDisplayName = (userDisplayName) => {
         setDisplayName(userDisplayName);
