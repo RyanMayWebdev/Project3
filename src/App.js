@@ -14,6 +14,11 @@ const App = () => {
 
     const [loggedIn, setLoggedIn] = useState(false);
     const [displayName, setDisplayName] = useState('');
+    const [channel,setChannel] = useState('general');
+
+    const changeChannel = (channelChoice) => {
+        setChannel(channelChoice);
+    }
 
     const loginStatus = (status) => {
         setLoggedIn(status);
@@ -37,14 +42,14 @@ const App = () => {
                 time : date.toLocaleTimeString(),
                 user: displayName
             };
-            const dbRef = ref(database,'messages')
+            const dbRef = ref(database,`${channel}`)
             push(dbRef, newMessageObj);
             setUserInput('');
         };
     };
 
      useEffect(()=> {
-        const messagesRef = ref(database,'messages');
+        const messagesRef = ref(database,`${channel}`);
         onValue(messagesRef, (snapshot) => {
             const data = snapshot.val();
             const messageArr = [];
@@ -61,11 +66,11 @@ const App = () => {
             setMessages(messageArr);
 
         });
-     },[]);
+     },[channel]);
 
     return (
         <div className="App">
-        <Header handleLoginState={ loginStatus } loggedIn={loggedIn} />
+        <Header handleLoginState={ loginStatus } loggedIn={loggedIn} changeChannel={changeChannel} />
         {
             !loggedIn ? <LoginForm handleLoginState={ loginStatus } getDisplayName={getDisplayName} /> :
         
