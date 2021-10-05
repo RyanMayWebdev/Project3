@@ -20,7 +20,7 @@ const Header = (props) => {
                         <select
                             id="channelSelect"
                             name="channelSelect"
-                            className={channelSelect}
+                            className="channelSelect"
                             onChange={(e) => props.changeChannel(e.target.value)}>
                             <option value="general">General</option>
                             <option value="gaming">Gaming</option>
