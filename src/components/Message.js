@@ -1,4 +1,4 @@
-import sound from '../sounds/correct.wav';
+import sound from '../sounds/notify.flac';
 import useSound from 'use-sound';
 
 const DisplayMessages = (props) => {
