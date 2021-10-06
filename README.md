@@ -1,13 +1,13 @@
-Welcome to Bubbles!
+# Welcome to Bubbles!
 
 Bubbles is a realtime chat application built using React and Firebase, with packages like React-input-emoji and bad-words to filter profanity. 
 
-#Login Form
+## Login Form
 When a user visits the site they are presented with a login/signup screen as shown below: Once the user has either signed up or entered their login information, these variables are passed into the authentication script using Firebase email/password authentication. Once verified the user will be presented with the main app view.
 
 ![Login page view for Bubbles app](/images/login.png)
 
-#Messages
+## Messages
 After logging in the user will be brought to the message screen and start in the general channel. From here they can select a channel using the drop down and start messaging by simply typing a message and hitting enter.
 
 ![Messaging section view of the Bubbles app.](/images/bubbles.png)
