@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+Welcome to Bubbles!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bubbles is a realtime chat application built using React and Firebase, with packages like React-input-emoji and bad-words to filter profanity. 
 
-## Available Scripts
+#Login Form
+When a user visits the site they are presented with a login/signup screen as shown below: Once the user has either signed up or entered their login information, these variables are passed into the authentication script using Firebase email/password authentication. Once verified the user will be presented with the main app view.
 
-In the project directory, you can run:
+![Login page view for Bubbles app](./images/login.jpg)
 
-### `npm start`
+#Messages
+After logging in the user will be brought to the message screen and start in the general channel. From here they can select a channel using the drop down and start messaging by simply typing a message and hitting enter.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Messaging section view of the Bubbles app.](./images/bubbles.jpg)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Additionally users can use emojis through the use of the react-input-emoji package as seen below. Click on the smile symbol to reveal the menu.
 
-### `npm test`
+![Emoji menu view from the Bubbles app](./images/emojiInput.jpg)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Whenever a user types in the message and sends it, the message is then filtered for profanity and placed into an object containing the date/time and the user's displayname. This info is then pushed the the database reference point for that chat channel. A useEffect function calls upon theonValue function from Firebase to lsiten for changes and then updates the message feed accordingly through the use of the message component.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
