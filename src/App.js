@@ -6,10 +6,11 @@ import database from './utilities/firebase';
 import Header from './components/Header';
 import {ref, onValue, push } from 'firebase/database';
 import LoginForm from './components/LoginForm';
+import Footer from './components/Footer';
 import Filter  from 'bad-words'; //Profanity filter package
 
 const App = () => {
-
+    const date = new Date();
     const [messages,
         setMessages] = useState([]); 
     const [loggedIn, setLoggedIn] = useState(false);
@@ -37,7 +38,6 @@ const App = () => {
                 const filter = new Filter();
                 message = filter.clean(userInput);
             }
-            const date = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
             const newMessageObj = {
                 message: message,
@@ -73,23 +73,25 @@ const App = () => {
 
     return (
         <div className="App">
-        <Header handleLoginState={ loginStatus } loggedIn={loggedIn} changeChannel={changeChannel} />
-        {
-            !loggedIn ? <LoginForm handleLoginState={ loginStatus } getDisplayName={getDisplayName} /> : //display login page or chat page depending on whether user is logged in or not.
+            <Header handleLoginState={ loginStatus } loggedIn={loggedIn} changeChannel={changeChannel} />
+            {
+                !loggedIn ? <LoginForm handleLoginState={ loginStatus } getDisplayName={getDisplayName} /> : //display login page or chat page depending on whether user is logged in or not.
         
-           (
-            <>
-                <div className="messagesContainer">
-                    {messages.length > 0 ? <DisplayMessages messages={messages} displayName={displayName} /> : null}
+            (
+                <>
+                    <div className="messagesContainer">
+                        {messages.length > 0 ? <DisplayMessages messages={messages} displayName={displayName} /> : null}
 
-                 </div>
-                <div className="userMessageContainer">
-                    <ChatInput handleFunc={handleSubmit}/>
-                </div>
-            </>
+                    </div>
+                    <div className="userMessageContainer">
+                        <ChatInput handleFunc={handleSubmit}/>
+                    </div>
+                </>
 
-           )
-        }
+            )
+            }
+
+            <Footer year={date.getFullYear()} />
         </div>
     );
 }
