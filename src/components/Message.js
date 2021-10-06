@@ -1,12 +1,12 @@
 import playSound from "../utilities/playSound"
 
 const DisplayMessages = (props) => {
-    const lastMessage = props.messages[props.messages.length -1 ]
+    const lastMessage = props.messages[props.messages.length -1 ] //If latest message isn't from the user then play notification sound
     playSound(lastMessage, props.displayName)
     return props
         .messages
         .map((message) => {
-            const messageClass = message.user === props.displayName
+            const messageClass = message.user === props.displayName //place users messages on the right
                 ? "message right"
                 : "message"
             return (

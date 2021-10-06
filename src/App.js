@@ -6,12 +6,12 @@ import database from './utilities/firebase';
 import Header from './components/Header';
 import {ref, onValue, push } from 'firebase/database';
 import LoginForm from './components/LoginForm';
-import Filter  from 'bad-words';
+import Filter  from 'bad-words'; //Profanity filter package
 
 const App = () => {
+
     const [messages,
         setMessages] = useState([]); 
-
     const [loggedIn, setLoggedIn] = useState(false);
     const [displayName, setDisplayName] = useState('');
     const [channel,setChannel] = useState('general');
@@ -32,7 +32,7 @@ const App = () => {
         e.preventDefault();
         if (userInput) {
             let message = userInput;
-            if (/\P{Extended_Pictographic}/u.test(userInput)) {
+            if (/\P{Extended_Pictographic}/u.test(userInput)) { //Checks if user input was only an emoji so profanity filter doesnt run as it'll break it
                 const filter = new Filter();
                 message = filter.clean(userInput);
             }
@@ -50,7 +50,7 @@ const App = () => {
     };
 
      useEffect(()=> {
-        const messagesRef = ref(database,`${channel}`);
+        const messagesRef = ref(database,`${channel}`); //set database reference to the selected chat channel
         onValue(messagesRef, (snapshot) => {
             const data = snapshot.val();
             const messageArr = [];
@@ -73,7 +73,7 @@ const App = () => {
         <div className="App">
         <Header handleLoginState={ loginStatus } loggedIn={loggedIn} changeChannel={changeChannel} />
         {
-            !loggedIn ? <LoginForm handleLoginState={ loginStatus } getDisplayName={getDisplayName} /> :
+            !loggedIn ? <LoginForm handleLoginState={ loginStatus } getDisplayName={getDisplayName} /> : //display login page or chat page depending on whether user is logged in or not.
         
            (
             <>
