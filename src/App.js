@@ -28,6 +28,7 @@ const App = () => {
         setDisplayName(userDisplayName);
     }
 
+    //Grab user input, filter for profanity if needed, push to database. Passed as a func to ChatInput component.
     const handleSubmit = (e, userInput, setUserInput) => {
         e.preventDefault();
         if (userInput) {
@@ -49,6 +50,7 @@ const App = () => {
         };
     };
 
+    //Grab data from database based on chat channel selected
      useEffect(()=> {
         const messagesRef = ref(database,`${channel}`); //set database reference to the selected chat channel
         onValue(messagesRef, (snapshot) => {
