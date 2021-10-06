@@ -35,6 +35,7 @@ const LoginForm = (props) => {
     return (
         <div className="loginWrapper">
             <div className="formContainer">
+            {/* Sign up form */}
                 <h2>Create an account:
                 </h2>
                 <form className="loginForm" onSubmit={handleSignUpSubmit}>
@@ -70,6 +71,7 @@ const LoginForm = (props) => {
 }
                 </form>
             </div>
+            {/* Login form */}
             <div className="formContainer">
                 <h2>Sign in:</h2>
                 <form className="loginForm"  onSubmit={handleSignInSubmit}>

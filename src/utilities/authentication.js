@@ -6,6 +6,8 @@ import {
 } from "firebase/auth";
 
 const auth = getAuth();
+
+//Sign up users
 const signUp = (email, password, loggedIn, username, setDisplayName, errorCheck) => {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -13,11 +15,11 @@ const signUp = (email, password, loggedIn, username, setDisplayName, errorCheck)
             const user = userCredential.user;
             loggedIn(true);
             updateProfile(auth.currentUser, {
-                displayName: username
+                displayName: username //Add user provided display name to profile
             }).then(() => {
-                setDisplayName(user.displayName)
+                setDisplayName(user.displayName) //Pass display name to parent state in App.js
             }).catch((error) => {
-                errorCheck(error);
+                errorCheck(error); //Grab error to display to user
 
             });
 

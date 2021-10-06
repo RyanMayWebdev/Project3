@@ -5,6 +5,7 @@ const Header = (props) => {
         logout(props.handleLoginState);
     }
 
+    //toggle display of buttons and dropdowns in header
     const optionClass = props.loggedIn
         ? "options"
         : "hidden"
