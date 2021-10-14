@@ -220,7 +220,7 @@ input:focus-visible {
 Emoji Picker Styling
 ============================*/
 
-.react-emoji div:first-of-type {
+/* .react-emoji div:first-of-type {
     border: none;
     border-radius: 0.75rem;
     padding: 0.5rem;
@@ -238,23 +238,70 @@ Emoji Picker Styling
     height: 0.5rem;
 }
 
- .react-input-emoji--wrapper:focus .react-input-emoji--input, .react-input-emoji--wrapper:focus-within  .react-input-emoji--input{
-    height: 7.5rem;
-}
 
 
 section .emoji-mart-search input {
     font-size: 1rem;
     width: 70%;
+} */
+
+.userInput {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 1rem;
+    display: flex;
+    width: 100%;
 }
 
+.chatForm {
+    align-items: center;
+    display: flex;
+}
+
+.chatForm textarea {
+    border: none;
+    margin: 0.5rem;
+    padding: 1rem;
+    resize: none;
+    width: calc(100% - 2rem);
+}
+
+.chatForm textarea:focus, .chatForm textarea:focus-within  {
+    height: 7.5rem;
+}
+
+.chatForm button {
+    background-color: #fff;
+    border: 1px solid #cbcbcb;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    margin-right: 1rem;
+}
+
+.hidden {
+    display: none
+}
+
+.visible {
+    bottom: 175px;
+    display: block;
+    position: absolute
+}
+
+.userInput button {
+    background-color: #00ffb8;
+    border: 1px solid #cbcbcb;
+    border-radius: 1rem;
+    margin: 1rem;
+    padding: 0.5rem;
+}
 
 /* =========================
 Media Queries
 ============================*/
 
 @media (max-width: 767px) {
-    button.react-input-emoji--button {
+    .chatForm button{
         display: none;
     }
 

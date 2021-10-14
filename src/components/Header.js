@@ -1,6 +1,5 @@
 import {logout} from "../utilities/authentication";
 const Header = (props) => {
-
     const handleClick = () => {
         logout(props.handleLoginState);
     }
