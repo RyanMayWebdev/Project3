@@ -30,7 +30,7 @@ const ChatInput = (props) => {
     <> 
     <form onSubmit={(e) => props.handleFunc(e, userInput, setUserInput)} id="chatInputForm" className="chatForm">
         <label htmlFor="chatInput" className="sr-only">Message:</label>
-        <button type="button" onClick={() => setToggleShow(!toggleShow)}>Emojis</button>
+        <button className="emojiButton" type="button" onClick={() => setToggleShow(!toggleShow)}><i className="fas fa-smile-beam"><p class="srOnly">Emojis</p></i></button>
         <div className={emojiShow}><Picker onEmojiClick={onEmojiClick}/></div>
         <div className="userInput">
             <textarea
@@ -40,7 +40,7 @@ const ChatInput = (props) => {
                 name="chatInput"
                 id="chatInput"
                 placeholder="Write your message here..."/>
-            <button>Send</button>
+            <button type="submit" className="sendButton"><i className="fas fa-paper-plane"></i><p className="srOnly">Send</p></button>
         </div>
     </form> 
     </>
