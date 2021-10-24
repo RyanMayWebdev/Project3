@@ -16,7 +16,6 @@ body {
 }
 
 footer {
-    background-color: #00ffb8;
     color: #fff;
     text-align: center;
 }
@@ -58,14 +57,25 @@ Main/Message Area
     justify-content: space-between;
 }
 
+.deleteButton {
+    align-self: flex-end;
+    background-color: #00ffb8;
+    border: none;
+    border-radius: 50%;
+    color:#000;
+
+}
+
 .hidden {
     display: none;
 }
 
 .message {
-    background-color: white;
     border: 3px solid #00ffb8;
     border-radius: 0 1rem 1rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
     flex: 0 1 25%;
     margin: 1rem;
     padding: 1.5rem;
@@ -74,6 +84,16 @@ Main/Message Area
 
 .message:last-of-type {
     scroll-snap-align: end;
+}
+
+.message h2 {
+    font-size: 1rem;
+}
+
+.message h2 span {
+    color: #a8a8a8;
+    font-weight: 400;
+    margin: 0 0.5rem;
 }
 
 .messagesContainer {
@@ -93,7 +113,6 @@ Main/Message Area
 }
 
 .userMessageContainer {
-    background-color: #00ffb8;
     border-radius: 0.5rem 0.5rem 0 0;
     display: flex;
     justify-content: center;
@@ -118,14 +137,14 @@ h1 {
 
 header {
     align-items: center;
-    background-color: #00ffb8;
+    background-color: #454545;
     display: flex;
     justify-content: space-around;
     margin-bottom: 1rem;
 }
 
 .channelSelect {
-    background-color: #00ffb8;
+    background-color: #454545;
     border: 3px solid #fff;
     border-radius: 1rem;
     color: #fff;
@@ -251,7 +270,7 @@ Chat Input
     font-size: 1.5rem;
 }
 .emojiButton {
-    color: #fff;
+    color: #00ffb8;
     margin-right: 0.5rem;
 }
 

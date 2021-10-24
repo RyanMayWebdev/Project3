@@ -1,7 +1,7 @@
 import playSound from "../utilities/playSound"
 
 const DisplayMessages = (props) => {
-    const lastMessage = props.messages[props.messages.length -1 ] //If latest message isn't from the user then play notification sound
+    const lastMessage = props.messages[props.messages.length - 1] //If latest message isn't from the user then play notification sound
     playSound(lastMessage, props.displayName)
     return props
         .messages
@@ -11,13 +11,19 @@ const DisplayMessages = (props) => {
                 : "message"
             return (
                 <div className={messageClass} key={message.id}>
-                    <p >{message.message}</p>
+                    {message.user === props.displayName
+                        ? <button className="deleteButton" id={message.id}>X</button>
+                        : null
+}
+                    <h2>
+                        {message.user}
+                        <span>{message.time}</span>
+                    </h2>
+
                     <div>
-                        <p>
-                            by {message.user}
-                            @ {message.time}
-                        </p>
+                        <p >{message.message}</p>
                     </div>
+
                 </div>
             )
         })
