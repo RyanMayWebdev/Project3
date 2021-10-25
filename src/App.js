@@ -80,7 +80,7 @@ const App = () => {
             (
                 <>
                     <div className="messagesContainer">
-                        {messages.length > 0 ? <DisplayMessages messages={messages} displayName={displayName} /> : null}
+                        {messages.length > 0 ? <DisplayMessages messages={messages} displayName={displayName} channel={channel}/> : null}
 
                     </div>
                     <div className="userMessageContainer">
