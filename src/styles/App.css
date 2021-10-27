@@ -17,12 +17,20 @@ body {
 
 footer {
     color: #fff;
+    margin: auto;
     text-align: center;
+    width: 16rem;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
 }
 
 footer p {
-    margin: 0.5rem 0 ;
+    margin: 0;
 }
+
 
 /* =========================
 ScrollBar
@@ -49,12 +57,16 @@ ScrollBar
 /* =========================
 Main/Message Area
 ============================*/
-.App {
+.app {
     background-color: #333333;
     display: flex;
-    flex-direction: column;
     height: 100vh; 
     justify-content: space-between;
+}
+
+.appLogin {
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .deleteButton {
@@ -88,20 +100,26 @@ Main/Message Area
 
 .deleteConfirm p {
     color: #fff;
-    text-align: center;
     padding: 1rem;
+    text-align: center;
 }
 
 .deleteConfirm button {
     background-color: #00ffb8;
-    border-radius: 0.7rem;
     border: none;
-    width: 5rem;
+    border-radius: 0.7rem;
     height: 2rem;
+    width: 5rem;
 }
 
 .hidden {
     display: none;
+}
+
+.messagingSection {
+    height: 100vh;
+    justify-self: end;
+    width: 85vw;
 }
 
 .message {
@@ -133,13 +151,16 @@ Main/Message Area
 
 .messagesContainer {
     display: flex;
-    flex: 0 1 75%;
     flex-direction: column;
-    margin: 0 auto 1rem;
+    height: 75vh;
+    justify-self: end;
     overflow-y: scroll;
     overscroll-behavior-y: contain;
     scroll-snap-type: y proximity;
-    width: 90%;
+}
+
+.shrinkContainer {
+    height: 75vh;
 }
 
 .right {
@@ -148,7 +169,7 @@ Main/Message Area
 }
 
 .userMessageContainer {
-    border-radius: 0.5rem 0.5rem 0 0;
+    border-top: 0.1rem solid #00ffb8;
     display: flex;
     justify-content: center;
     padding: 0.5rem;
@@ -165,18 +186,34 @@ h1 {
     color: #00ffb8;
     font-family: 'Ephesis', cursive;
     font-size: 5rem;
-    margin: 0;
+    margin: 3rem 0 0;
     padding: 1.5rem;
     text-shadow: 1px 1px #000;
 }
 
 header {
-    align-items: center;
     background-color: #454545;
     box-shadow: 0 0.2rem 0.2rem #212121;
     display: flex;
+    height: 100vh;
     justify-content: space-around;
-    margin-bottom: 1rem;
+    min-width: max-content;
+    width: 15vw;
+    z-index: 4;
+}
+
+.fa-bars, .fa-times {
+    color: #fff;
+    margin: 1rem;
+    position: absolute;
+    z-index: 5;
+}
+
+.shift {
+    height: unset;
+    margin: 0;
+    position: static;
+    width: unset;
 }
 
 .channelSelect {
@@ -198,22 +235,41 @@ header {
 
 }
 
+input[type="button"] {
+    background-color: #454545;
+    border: none;
+    color: #fff;
+    text-transform: capitalize;
+}
+
 .options {
-    align-items:baseline;
+    align-items: flex-start;
     display: flex;
+    flex-direction: column;
+    height: 90vh;
+    justify-content: space-evenly;
 }
 
 .options form, .options label {
-    margin-right: 0.5rem;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 0.5rem;
+}
+
+.options form {
+    height: 50vh;
 }
 .options label {
     color: #fff;
     font-weight: 600;
 }
 .logoutBtn {
-    background-color: #fff;
-    border: 1px solid #acacac;
+    background-color: #00ffb8;
+    border: none;
     border-radius: 1rem;
+    margin-left: 0.5rem;
     padding: 0.2rem 1rem;
 }
 
@@ -233,7 +289,7 @@ input:focus-visible {
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    margin: 0 auto 1rem;
+    margin: 2rem auto;
     max-width: 500px;
     width: 90%;
 }
@@ -297,9 +353,10 @@ Chat Input
     width: calc(100% - 2rem);
 }
 
-.chatForm textarea:focus, .chatForm textarea:focus-within  {
-    height: 7.5rem;
+.messagingSection textarea:focus, .messagingSection textarea:focus-within  {
+    height: 8vh;
 }
+
 .chatForm button {
     background-color: #00ffb700;
     border: none;
@@ -325,15 +382,41 @@ Chat Input
 /* =========================
 Media Queries
 ============================*/
+@media (min-width: 768px) {
+    .fa-bars {
+        display: none;
+    }
+}
 
-@media (max-width: 767px) {
+@media (max-width: 767px),(max-height: 700px){
+
     .emojiButton{
         display: none;
     }
 
     h1 {
         font-size: 4rem;
+        margin: 0;
         padding: 0;
+    }
+
+    .hideHeader {
+        position: absolute;
+        transform: translateX(-60vw);
+        transition: all 1s;
+        width: 60vw;
+    }
+
+    .showHeader {
+        transform: translateX(0vw);
+    }
+
+    .showHeader h1 {
+        margin: 3rem 0 0;
+    }
+
+    .messagingSection {
+        width: 100vw;
     }
 }
 
@@ -353,9 +436,47 @@ Media Queries
         font-size: 2rem;
     }
 
+    .loginWrapper h2 {
+        text-align: center;
+    }
+
+    .message {
+        width: 60%;
+    }
+
     .options {
         align-items: center;
         flex-direction: column;
         margin-bottom: 0.5rem;
     }
+}
+
+@media (max-height: 800px) {
+    .options {
+        height: unset;
+    }
+
+    .options form {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-height: 550px) {
+    .messagesContainer {
+        height: 60vh;
+    }
+
+}
+
+@media (min-height: 650px) {
+    .messagesContainer {
+        height: 80vh;
+    }
+}
+
+@media (min-height: 800px) {
+    .messagesContainer {
+        height: 85vh;
+    }
+
 }
