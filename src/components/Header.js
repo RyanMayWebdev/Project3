@@ -10,23 +10,23 @@ const Header = (props) => {
         : "hidden"
     return (
 
-        <header>
+        <header className={props.class}>
             <div className='headerWrapper'>
                 <h1>Bubbles</h1>
                 <div className={optionClass}>
                     <form >
                         <label htmlFor="channelSelect">Channel:
                         </label>
-                        <select
+                        <div
                             id="channelSelect"
                             name="channelSelect"
                             className="channelSelect"
                             onChange={(e) => props.changeChannel(e.target.value)}>
-                            <option value="general">General</option>
-                            <option value="gaming">Gaming</option>
-                            <option value="movies">Movies</option>
-                            <option value="music">Music</option>
-                        </select>
+                            <input type='radio' name='channelSelect' value="general" /> General
+                            <input type="radio" name='channelSelect' value="gaming" />Gaming
+                            <input type="radio" name='channelSelect' value="movies" />Movies
+                            <input type="radio" name='channelSelect' value="music" />Music
+                        </div>
                     </form>
                     {props.loggedIn
                         ? <button className="logoutBtn" onClick={handleClick}>Logout</button>

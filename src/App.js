@@ -17,6 +17,7 @@ const App = () => {
     const [displayName, setDisplayName] = useState('');
     const [channel,setChannel] = useState('general');
 
+
     const changeChannel = (channelChoice) => {
         setChannel(channelChoice);
     }
@@ -71,14 +72,16 @@ const App = () => {
         });
      },[channel]);
 
+     const shiftClass = loggedIn ? null: 'shift';
+     const appClass = loggedIn ? 'app' : 'app appLogin'
     return (
-        <div className="App">
-            <Header handleLoginState={ loginStatus } loggedIn={loggedIn} changeChannel={changeChannel} />
-            {
+        <div className={appClass}>
+            <Header class={shiftClass} handleLoginState={ loginStatus } loggedIn={loggedIn} changeChannel={changeChannel} />
+            {   
                 !loggedIn ? <LoginForm handleLoginState={ loginStatus } getDisplayName={getDisplayName} /> : //display login page or chat page depending on whether user is logged in or not.
         
             (
-                <>
+                <div className="messagingSection">
                     <div className="messagesContainer">
                         {messages.length > 0 ? <DisplayMessages messages={messages} displayName={displayName} channel={channel}/> : null}
 
@@ -86,12 +89,12 @@ const App = () => {
                     <div className="userMessageContainer">
                         <ChatInput handleFunc={handleSubmit}/>
                     </div>
-                </>
+                </div>
 
             )
             }
 
-            <Footer year={date.getFullYear()} />
+            <Footer class={shiftClass} year={date.getFullYear()} />
         </div>
     );
 }

@@ -16,12 +16,12 @@ body {
 }
 
 footer {
+    bottom: 0;
     color: #fff;
+    margin: auto;
+    position: absolute;
     text-align: center;
-}
-
-footer p {
-    margin: 0.5rem 0 ;
+    width: 350px;
 }
 
 /* =========================
@@ -49,12 +49,15 @@ ScrollBar
 /* =========================
 Main/Message Area
 ============================*/
-.App {
+.app {
     background-color: #333333;
     display: flex;
-    flex-direction: column;
     height: 100vh; 
     justify-content: space-between;
+}
+
+.appLogin {
+    flex-direction: column;
 }
 
 .deleteButton {
@@ -88,20 +91,26 @@ Main/Message Area
 
 .deleteConfirm p {
     color: #fff;
-    text-align: center;
     padding: 1rem;
+    text-align: center;
 }
 
 .deleteConfirm button {
     background-color: #00ffb8;
-    border-radius: 0.7rem;
     border: none;
-    width: 5rem;
+    border-radius: 0.7rem;
     height: 2rem;
+    width: 5rem;
 }
 
 .hidden {
     display: none;
+}
+
+.messagingSection {
+    height: 100vh;
+    justify-self: end;
+    width: 85vw;
 }
 
 .message {
@@ -133,13 +142,12 @@ Main/Message Area
 
 .messagesContainer {
     display: flex;
-    flex: 0 1 75%;
     flex-direction: column;
-    margin: 0 auto 1rem;
+    height: 85vh;
+    justify-self: end;
     overflow-y: scroll;
     overscroll-behavior-y: contain;
     scroll-snap-type: y proximity;
-    width: 90%;
 }
 
 .right {
@@ -148,7 +156,7 @@ Main/Message Area
 }
 
 .userMessageContainer {
-    border-radius: 0.5rem 0.5rem 0 0;
+    border-top: 0.1rem solid #00ffb8;
     display: flex;
     justify-content: center;
     padding: 0.5rem;
@@ -171,12 +179,20 @@ h1 {
 }
 
 header {
-    align-items: center;
     background-color: #454545;
     box-shadow: 0 0.2rem 0.2rem #212121;
     display: flex;
+    height: 100vh;
     justify-content: space-around;
-    margin-bottom: 1rem;
+    min-width: max-content;
+    width: 15vw;
+}
+
+.shift {
+    height: unset;
+    margin: 0;
+    position: static;
+    width: unset;
 }
 
 .channelSelect {

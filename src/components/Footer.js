@@ -1,6 +1,6 @@
 const Footer = (props) => {
     return (
-        <footer>
+        <footer className={props.class}>
             <p>&copy; Ryan May {props.year} </p>
         </footer>
     )
