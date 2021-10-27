@@ -16,13 +16,21 @@ body {
 }
 
 footer {
-    bottom: 0;
     color: #fff;
     margin: auto;
-    position: absolute;
     text-align: center;
-    width: 350px;
+    width: 16rem;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
 }
+
+footer p {
+    margin: 0;
+}
+
 
 /* =========================
 ScrollBar
@@ -144,7 +152,7 @@ Main/Message Area
 .messagesContainer {
     display: flex;
     flex-direction: column;
-    height: 85vh;
+    height: 75vh;
     justify-self: end;
     overflow-y: scroll;
     overscroll-behavior-y: contain;
@@ -191,6 +199,7 @@ header {
     justify-content: space-around;
     min-width: max-content;
     width: 15vw;
+    z-index: 4;
 }
 
 .fa-bars, .fa-times {
@@ -227,8 +236,8 @@ header {
 }
 
 input[type="button"] {
-    border: none;
     background-color: #454545;
+    border: none;
     color: #fff;
     text-transform: capitalize;
 }
@@ -373,30 +382,37 @@ Chat Input
 /* =========================
 Media Queries
 ============================*/
-@media (min-width: 767px) {
+@media (min-width: 768px) {
     .fa-bars {
         display: none;
     }
 }
-@media (max-width: 767px) {
+
+@media (max-width: 767px),(max-height: 700px){
+
     .emojiButton{
         display: none;
     }
 
     h1 {
         font-size: 4rem;
+        margin: 0;
         padding: 0;
     }
 
     .hideHeader {
         position: absolute;
-        width: 60vw;
         transform: translateX(-60vw);
-        transition: tranform 1s;
+        transition: all 1s;
+        width: 60vw;
     }
 
     .showHeader {
         transform: translateX(0vw);
+    }
+
+    .showHeader h1 {
+        margin: 3rem 0 0;
     }
 
     .messagingSection {
@@ -420,6 +436,14 @@ Media Queries
         font-size: 2rem;
     }
 
+    .loginWrapper h2 {
+        text-align: center;
+    }
+
+    .message {
+        width: 60%;
+    }
+
     .options {
         align-items: center;
         flex-direction: column;
@@ -435,4 +459,24 @@ Media Queries
     .options form {
         margin-bottom: 1rem;
     }
+}
+
+@media (max-height: 550px) {
+    .messagesContainer {
+        height: 60vh;
+    }
+
+}
+
+@media (min-height: 650px) {
+    .messagesContainer {
+        height: 80vh;
+    }
+}
+
+@media (min-height: 800px) {
+    .messagesContainer {
+        height: 85vh;
+    }
+
 }
