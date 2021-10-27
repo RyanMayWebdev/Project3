@@ -474,7 +474,7 @@ Media Queries
     }
 }
 
-@media (min-height: 800px) {
+@media (min-height: 850px) {
     .messagesContainer {
         height: 85vh;
     }
