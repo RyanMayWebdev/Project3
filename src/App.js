@@ -16,8 +16,7 @@ const App = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [displayName, setDisplayName] = useState('');
     const [channel,setChannel] = useState('general');
-
-
+    const [menuClicked, setMenuClicked] = useState(false);
     const changeChannel = (channelChoice) => {
         setChannel(channelChoice);
     }
@@ -72,22 +71,28 @@ const App = () => {
         });
      },[channel]);
 
-     const shiftClass = loggedIn ? null: 'shift';
+     let shiftClass = loggedIn ? 'hideHeader ': 'shift';
+     const menuIcon = menuClicked ? 'fas fa-times' : 'fas fa-bars';
      const appClass = loggedIn ? 'app' : 'app appLogin'
+     shiftClass = menuClicked ? shiftClass + 'showHeader' : shiftClass;
+     console.log('re-render')
+
     return (
+        
         <div className={appClass}>
+            <i className={menuIcon} onClick={() => setMenuClicked(!menuClicked)}></i>
             <Header class={shiftClass} handleLoginState={ loginStatus } loggedIn={loggedIn} changeChannel={changeChannel} />
             {   
                 !loggedIn ? <LoginForm handleLoginState={ loginStatus } getDisplayName={getDisplayName} /> : //display login page or chat page depending on whether user is logged in or not.
         
             (
-                <div className="messagingSection">
-                    <div className="messagesContainer">
+                <div className='messagingSection'>
+                    <div className='messagesContainer'>
                         {messages.length > 0 ? <DisplayMessages messages={messages} displayName={displayName} channel={channel}/> : null}
 
                     </div>
                     <div className="userMessageContainer">
-                        <ChatInput handleFunc={handleSubmit}/>
+                        <ChatInput handleFunc={handleSubmit} />
                     </div>
                 </div>
 

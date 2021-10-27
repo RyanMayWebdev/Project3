@@ -58,6 +58,7 @@ Main/Message Area
 
 .appLogin {
     flex-direction: column;
+    justify-content: flex-start;
 }
 
 .deleteButton {
@@ -150,6 +151,10 @@ Main/Message Area
     scroll-snap-type: y proximity;
 }
 
+.shrinkContainer {
+    height: 75vh;
+}
+
 .right {
     align-self: flex-end;
     border-radius: 1rem 0 1rem 1rem;
@@ -173,7 +178,7 @@ h1 {
     color: #00ffb8;
     font-family: 'Ephesis', cursive;
     font-size: 5rem;
-    margin: 0;
+    margin: 3rem 0 0;
     padding: 1.5rem;
     text-shadow: 1px 1px #000;
 }
@@ -186,6 +191,13 @@ header {
     justify-content: space-around;
     min-width: max-content;
     width: 15vw;
+}
+
+.fa-bars, .fa-times {
+    color: #fff;
+    margin: 1rem;
+    position: absolute;
+    z-index: 5;
 }
 
 .shift {
@@ -214,22 +226,41 @@ header {
 
 }
 
+input[type="button"] {
+    border: none;
+    background-color: #454545;
+    color: #fff;
+    text-transform: capitalize;
+}
+
 .options {
-    align-items:baseline;
+    align-items: flex-start;
     display: flex;
+    flex-direction: column;
+    height: 90vh;
+    justify-content: space-evenly;
 }
 
 .options form, .options label {
-    margin-right: 0.5rem;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 0.5rem;
+}
+
+.options form {
+    height: 50vh;
 }
 .options label {
     color: #fff;
     font-weight: 600;
 }
 .logoutBtn {
-    background-color: #fff;
-    border: 1px solid #acacac;
+    background-color: #00ffb8;
+    border: none;
     border-radius: 1rem;
+    margin-left: 0.5rem;
     padding: 0.2rem 1rem;
 }
 
@@ -249,7 +280,7 @@ input:focus-visible {
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    margin: 0 auto 1rem;
+    margin: 2rem auto;
     max-width: 500px;
     width: 90%;
 }
@@ -313,9 +344,10 @@ Chat Input
     width: calc(100% - 2rem);
 }
 
-.chatForm textarea:focus, .chatForm textarea:focus-within  {
-    height: 7.5rem;
+.messagingSection textarea:focus, .messagingSection textarea:focus-within  {
+    height: 8vh;
 }
+
 .chatForm button {
     background-color: #00ffb700;
     border: none;
@@ -341,7 +373,11 @@ Chat Input
 /* =========================
 Media Queries
 ============================*/
-
+@media (min-width: 767px) {
+    .fa-bars {
+        display: none;
+    }
+}
 @media (max-width: 767px) {
     .emojiButton{
         display: none;
@@ -350,6 +386,21 @@ Media Queries
     h1 {
         font-size: 4rem;
         padding: 0;
+    }
+
+    .hideHeader {
+        position: absolute;
+        width: 60vw;
+        transform: translateX(-60vw);
+        transition: tranform 1s;
+    }
+
+    .showHeader {
+        transform: translateX(0vw);
+    }
+
+    .messagingSection {
+        width: 100vw;
     }
 }
 
@@ -373,5 +424,15 @@ Media Queries
         align-items: center;
         flex-direction: column;
         margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-height: 800px) {
+    .options {
+        height: unset;
+    }
+
+    .options form {
+        margin-bottom: 1rem;
     }
 }
