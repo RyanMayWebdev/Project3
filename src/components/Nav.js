@@ -19,7 +19,7 @@ const Nav = (props) => {
         ? "options"
         : "hidden"
 
-    let shiftClass = props.loggedIn ? 'hideHeader ': 'shift';
+    let shiftClass = props.loggedIn ? 'hideHeader ': 'shift ';
     shiftClass = menuClicked ? shiftClass + 'showHeader' : shiftClass;
     const menuIcon = menuClicked ? 'fas fa-times' : 'fas fa-bars';
 
